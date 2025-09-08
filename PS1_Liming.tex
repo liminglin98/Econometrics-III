@@ -1,0 +1,127 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{setspace}
+\usepackage[letterpaper]{geometry}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{amsfonts}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{graphicx}
+\usepackage{float}
+\usepackage{tabularx}
+\usepackage[shortlabels]{enumitem}
+\geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
+\setlength\parindent{24pt}
+\begin{document}
+\begin{flushleft}
+Liming Lin\\
+Professor \\
+Econometrics III\\
+Problem Set 1\\
+Sept. 8th, 2025\\
+\section*{Exercise 1}
+\subsection*{1.1}
+We want to prove:
+\[
+\frac{1}{n-1} \sum_{i=1}^n (Y_i - \overline{Y})^2 = \frac{1}{n-1} \sum_{i=1}^n Y_i^2 - \frac{n}{n-1} \overline{Y}^2
+\]
+Starting with the left-hand side:
+\begin{align*}
+\frac{1}{n-1} \sum_{i=1}^n (Y_i - \overline{Y})^2 
+&= \frac{1}{n-1} \sum_{i=1}^n \left(Y_i^2 - 2Y_i\overline{Y} + \overline{Y}^2\right) \\
+&= \frac{1}{n-1} \left( \sum_{i=1}^n Y_i^2 - 2\overline{Y} \sum_{i=1}^n Y_i + n\overline{Y}^2 \right) \\
+&= \frac{1}{n-1} \left( \sum_{i=1}^n Y_i^2 - 2n\overline{Y}^2 + n\overline{Y}^2 \right) \\
+&= \frac{1}{n-1} \left( \sum_{i=1}^n Y_i^2 - n\overline{Y}^2 \right)
+\end{align*}
+
+\subsection*{1.2}
+We start from the variance identity:
+\[
+V(Y) = \mathbb{E}(Y^2) - \mathbb{E}(Y)^2
+\quad \Rightarrow \quad
+\mathbb{E}(Y^2) = V(Y) + \mathbb{E}(Y)^2
+\]
+
+Then:
+\[
+\mathbb{E}\left(\sum_{i=1}^n Y_i^2\right)
+= \sum_{i=1}^n \mathbb{E}(Y_i^2)
+= \sum_{i=1}^n \left(V(Y) + \mathbb{E}(Y)^2\right)
+= n V(Y) + n \mathbb{E}(Y)^2
+\]
+
+Also:
+\[
+V(\overline{Y}) = \frac{1}{n^2} V\left(\sum_{i=1}^n Y_i\right) 
+= \frac{1}{n^2} \cdot n \cdot V(Y) 
+= \frac{V(Y)}{n}
+\]
+
+So:
+\[
+\mathbb{E}(\overline{Y}^2) 
+= V(\overline{Y}) + \mathbb{E}(\overline{Y})^2 
+= \frac{V(Y)}{n} + \mathbb{E}(Y)^2
+\]
+
+Now plug into the expression from 1.1:
+\begin{align*}
+\frac{1}{n-1} \sum_{i=1}^n Y_i^2 
+- \frac{n}{n-1} \mathbb{E}(\overline{Y}^2)
+&= \frac{1}{n-1} \left( \sum_{i=1}^n \mathbb{E}(Y_i^2) - n \cdot \mathbb{E}(\overline{Y}^2) \right) \\
+&= \frac{1}{n-1} \left( \sum_{i=1}^n \left(V(Y) + \mathbb{E}(Y)^2\right) - n \left( \frac{V(Y)}{n} + \mathbb{E}(Y)^2 \right) \right) \\
+&= \frac{1}{n-1} \left( n \cdot \left(V(Y) + \mathbb{E}(Y)^2\right) - \left(V(Y) + n \cdot \mathbb{E}(Y)^2 \right) \right) \\
+&= \frac{1}{n-1} \left( V(Y)(n - 1) \right) = V(Y)
+\end{align*}
+
+
+\section*{Exercise 3}
+
+\subsection*{3.1}
+Define the continuous function:
+\[
+f(u,v) = uv
+\]
+Given:
+\[
+U_n \xrightarrow{P} \ell, \quad V_n \xrightarrow{P} \ell'
+\]
+and since \(f\) is continuous in \(\mathbb{R}^2\), the Continuous Mapping Theorem implies:
+\[
+U_n V_n = f(U_n, V_n) \xrightarrow{P} f(\ell, \ell') = \ell \ell'
+\]
+
+\subsection*{3.2}
+We are given:
+\[
+U_n \xrightarrow{P} \ell, \quad V_n \xrightarrow{P} \ell'
+\]
+
+By the first part of Slutsky lemma, since convergence in probability implies convergence in distribution, we have:
+\[
+U_n \xrightarrow{d} \ell, \quad V_n \xrightarrow{d} \ell'
+\]
+
+
+
+Define the continuous function:
+\[
+f(u, v) = uv
+\]
+Similar to 3.1, by the Continuous Mapping Theorem, we have:
+\[
+f(U_n, V_n) = U_n V_n \xrightarrow{d} f(\ell, \ell') = \ell \ell'
+\]
+
+
+Since \(\ell \ell'\) is a constant, by the second statement of Slutsky's lemma, convergence in distribution to a constant implies convergence in probability:
+\[
+U_n V_n \xrightarrow{P} \ell \ell'
+\]
+
+
+
+
+\end{flushleft}
+\end{document} 
