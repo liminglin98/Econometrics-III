@@ -12,6 +12,7 @@
 \usepackage{tabularx}
 \usepackage[shortlabels]{enumitem}
 \usepackage{amsopn} % For DeclareMathOperator
+\usepackage{booktabs} % For \toprule, \midrule, \bottomrule
 \DeclareMathOperator{\E}{\mathbb{E}}
 \DeclareMathOperator{\MSE}{MSE}
 \geometry{top=1.0in, bottom=1.0in, left=1.0in, right=1.0in}
@@ -175,8 +176,20 @@ n \left( \frac{\theta - \hat{\theta}_2}{\theta} \right) \xrightarrow{d} \text{Ex
 \]
 
 \item 
-The MM estimator $\hat\theta_{MM}=2\bar Y$ is unbiased with variance $\theta^2/(3n)$ and, by the CLT, satisfies $\sqrt{n}(\hat\theta_{MM}-\theta)\xrightarrow{d}\mathcal N(0,\theta^2/3)$; it is therefore $\sqrt{n}$-consistent and asymptotically normal. The ML estimator $\hat\theta_{ML}=\max_i Y_i$ is downward biased ($\E[\hat\theta_{ML}]=\tfrac{n}{n+1}\theta$) but consistent and converges faster: $n(\theta-\hat\theta_{ML})/\theta \xrightarrow{d}\mathrm{Exp}(1)$, and not asymptotically normal. As a result, it is not clear which estimator is better.
+The MM estimator $\hat\theta_{MM}=2\bar Y$ is unbiased with variance $\theta^2/(3n)$ and, by the CLT, satisfies $\sqrt{n}(\hat\theta_{MM}-\theta)\xrightarrow{d}\mathcal N(0,\theta^2/3)$; it is therefore $\sqrt{n}$-consistent and asymptotically normal. The ML estimator $\hat\theta_{ML}=\max_i Y_i$ is downward biased ($\E[\hat\theta_{ML}]=\tfrac{n}{n+1}\theta$) but consistent and converges faster: $n(\theta-\hat\theta_{ML})/\theta \xrightarrow{d}\mathrm{Exp}(1)$, although not asymptotically normal. As a result, $\hat{\theta}_{ML}$ is better.
 \item See Stata code in Appendix.
+
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{1}{cccc}}
+\toprule
+                    &        mean&          sd&         min&         max\\
+\midrule
+thetaMM             &    1.000828&    .0177119&    .9523674&    1.052426\\
+thetaML             &    .9989922&    .0009989&    .9935493&    .9999998\\
+\bottomrule
+\end{tabular}
+}
 \begin{figure}[h!]
     \centering
     \includegraphics[width=0.45\textwidth]{thetaMM_hist.png}
