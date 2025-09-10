@@ -129,18 +129,10 @@ Then:
 
 Therefore, \( \hat{\theta}_1 \) is asymptotically normal with asymptotic variance \( 4\operatorname{Var}(Y) = \frac{\theta^2}{3} \).
 
-\item Because $\theta$ is the upper bound of the distribution, the maximum value of $Y_{(n)}$ in the sample is a natural estimator for $\theta$.
+\item It is a natural idea because $\theta$ is the upper bound of the distribution, the maximum value of $Y_{(n)}$ in the sample is a natural estimator for $\theta$.
 
 \item we have:
 
-\[
-P(\hat\theta_{ML} \le x)
-= \begin{cases}
-0, & x<0,\\[4pt]
-\displaystyle P\big(Y_1\le x,\dots,Y_n\le x\big), & 0\le x \le \theta,\\[6pt]
-1, & x>\theta.
-\end{cases}
-\]
 
 For $0\le x\le \theta$, by independence,
 \[
@@ -152,7 +144,7 @@ Since $Y_1 \sim \mathrm{Unif}[0,\theta]$, its CDF on $[0,\theta]$ is $F_{Y}(x)=x
 \[
 P(\hat\theta_{ML} \le x) = \left(\frac{x}{\theta}\right)^n,\qquad 0\le x\le \theta.
 \]
-When $x<0$, $P(\hat\theta_{ML} \le x)=0$ since $\hat\theta_{ML}\ge 0$ almost surely. When $x>\theta$, $P(\hat\theta_{ML} \le x)=1$ since $\hat\theta_{ML}\le \theta$ almost surely.
+When $x<0$, $P(\hat\theta_{ML} \le x)=0$ since $\hat\theta_{ML}\ge 0$. When $x>\theta$, $P(\hat\theta_{ML} \le x)=1$ since $\hat\theta_{ML}\le \theta$.
 
 
 Putting the three regions together,
@@ -183,7 +175,7 @@ n \left( \frac{\theta - \hat{\theta}_2}{\theta} \right) \xrightarrow{d} \text{Ex
 \]
 
 \item 
-The MM estimator $\hat\theta_{MM}=2\bar Y$ is unbiased with variance $\theta^2/(3n)$ and, by the CLT, satisfies $\sqrt{n}(\hat\theta_{MM}-\theta)\xrightarrow{d}\mathcal N(0,\theta^2/3)$; it is therefore $\sqrt{n}$-consistent and asymptotically normal. The ML estimator $\hat\theta_{ML}=\max_i Y_i$ is downward biased ($\E[\hat\theta_{ML}]=\tfrac{n}{n+1}\theta$) but consistent and converges faster: $n(\theta-\hat\theta_{ML})/\theta \xrightarrow{d}\mathrm{Exp}(1)$, so its error is $O_p(1/n)$ with $\MSE\sim 2\theta^2/n^2$. So it is not clear which estimator is better.
+The MM estimator $\hat\theta_{MM}=2\bar Y$ is unbiased with variance $\theta^2/(3n)$ and, by the CLT, satisfies $\sqrt{n}(\hat\theta_{MM}-\theta)\xrightarrow{d}\mathcal N(0,\theta^2/3)$; it is therefore $\sqrt{n}$-consistent and asymptotically normal. The ML estimator $\hat\theta_{ML}=\max_i Y_i$ is downward biased ($\E[\hat\theta_{ML}]=\tfrac{n}{n+1}\theta$) but consistent and converges faster: $n(\theta-\hat\theta_{ML})/\theta \xrightarrow{d}\mathrm{Exp}(1)$, and not asymptotically normal. As a result, it is not clear which estimator is better.
 \item See Stata code in Appendix.
 \begin{figure}[h!]
     \centering
@@ -207,7 +199,7 @@ Therefore, by Slutsky’s lemma,
 =\frac{n(\theta-\hat\theta_{ML})}{\theta}\cdot\frac{\theta}{\hat\theta_{ML}}
 \ \xrightarrow{d}\ U\cdot 1 \;=\; U\sim\mathrm{Exp}(1).
 \]
-Let $t_{1-\alpha}$ be the $(1-\alpha)$-quantile of $\mathrm{Exp}(1)$ (so $t_{1-\alpha}=-\ln\alpha$). Then
+Let $t_{1-\alpha}$ be the $(1-\alpha)$-quantile of $\mathrm{Exp}(1)$. Then
 \[
 P\!\left(\frac{n(\theta-\hat\theta_{ML})}{\hat\theta_{ML}}\le t_{1-\alpha}\right)\ \to\ 1-\alpha,
 \]
@@ -215,7 +207,7 @@ which is equivalent to
 \[
 P\!\left(\theta \le \hat\theta_{ML}+\frac{\hat\theta_{ML}}{n}\,t_{1-\alpha}\right)\ \to\ 1-\alpha.
 \]
-Since $\hat\theta_{ML}\le \theta$ almost surely, we obtain the asymptotic $(1-\alpha)$ CI
+Since $\hat\theta_{ML}\le \theta$, we obtain the asymptotic $(1-\alpha)$ CI
 \[
 IC(\alpha)=\bigg[\ \hat\theta_{ML}\ ,\ \hat\theta_{ML}+\frac{\hat\theta_{ML}}{n}\,t_{1-\alpha}\ \bigg].
 \]
